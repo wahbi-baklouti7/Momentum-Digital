@@ -1,69 +1,130 @@
 import express from "express";
 import { createServer as createViteServer } from "vite";
-import Database from "better-sqlite3";
 import path from "path";
 import { fileURLToPath } from "url";
+import nodemailer from "nodemailer";
+import dotenv from "dotenv";
+
+dotenv.config();
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
-const db = new Database(path.join(__dirname, "leads.db"));
 
-// Initialize database
-db.exec(`
-  CREATE TABLE IF NOT EXISTS leads (
-    id INTEGER PRIMARY KEY AUTOINCREMENT,
-    name TEXT NOT NULL,
-    email TEXT NOT NULL,
-    website TEXT,
-    service TEXT,
-    budget TEXT,
-    message TEXT,
-    created_at DATETIME DEFAULT CURRENT_TIMESTAMP
-  )
-`);
+// Configure Nodemailer
+const transporter = nodemailer.createTransport({
+  host: "smtp.gmail.com",
+  port: 465,
+  secure: true,
+  auth: {
+    user: process.env.GMAIL_USER,
+    pass: process.env.GMAIL_APP_PASSWORD,
+  },
+});
+
+// Helper: Sanitize HTML to prevent XSS in emails
+function escapeHtml(text: string): string {
+  if (!text) return "";
+  return text
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;")
+    .replace(/'/g, "&#039;");
+}
+
+async function sendLeadNotification(lead: {
+  name: string;
+  email: string;
+  service?: string;
+  message?: string;
+}) {
+  if (!process.env.GMAIL_USER || !process.env.GMAIL_APP_PASSWORD) {
+    console.warn("⚠️ Email credentials missing, skipping notification.");
+    return;
+  }
+
+  const recipient = process.env.GMAIL_USER || process.env.SECOND_EMAIL;
+
+  const mailOptions = {
+    from: `"Momentum Digital" <${process.env.GMAIL_USER}>`,
+    to: recipient,
+    subject: `🚀 New Lead: ${escapeHtml(lead.name)}`,
+    html: `
+      <div style="font-family: 'Segoe UI', Arial, sans-serif; max-width: 600px; margin: 0 auto; background: #f8fafc; border-radius: 16px; overflow: hidden;">
+        <div style="background: linear-gradient(135deg, #0F172A, #6D28D9); padding: 32px; text-align: center;">
+          <h1 style="color: white; margin: 0; font-size: 24px;">New Lead Captured</h1>
+          <p style="color: rgba(255,255,255,0.7); margin: 8px 0 0;">Momentum Digital</p>
+        </div>
+        <div style="padding: 32px;">
+          <table style="width: 100%; border-collapse: collapse;">
+            <tr>
+              <td style="padding: 12px 0; border-bottom: 1px solid #e2e8f0; font-weight: bold; color: #0F172A; width: 120px;">Name</td>
+              <td style="padding: 12px 0; border-bottom: 1px solid #e2e8f0; color: #334155;">${escapeHtml(lead.name)}</td>
+            </tr>
+            <tr>
+              <td style="padding: 12px 0; border-bottom: 1px solid #e2e8f0; font-weight: bold; color: #0F172A;">Email</td>
+              <td style="padding: 12px 0; border-bottom: 1px solid #e2e8f0;"><a href="mailto:${escapeHtml(lead.email)}" style="color: #6D28D9;">${escapeHtml(lead.email)}</a></td>
+            </tr>
+            <tr>
+              <td style="padding: 12px 0; border-bottom: 1px solid #e2e8f0; font-weight: bold; color: #0F172A;">Service</td>
+              <td style="padding: 12px 0; border-bottom: 1px solid #e2e8f0; color: #334155;">${escapeHtml(lead.service || "Not specified")}</td>
+            </tr>
+            <tr>
+              <td style="padding: 12px 0; font-weight: bold; color: #0F172A; vertical-align: top;">Message</td>
+              <td style="padding: 12px 0; color: #334155; white-space: pre-wrap;">${escapeHtml(lead.message || "No message provided")}</td>
+            </tr>
+          </table>
+          <div style="margin-top: 24px; text-align: center;">
+            <a href="mailto:${escapeHtml(lead.email)}" style="display: inline-block; padding: 12px 32px; background: #0F172A; color: white; text-decoration: none; border-radius: 8px; font-weight: bold;">Reply to ${escapeHtml(lead.name)}</a>
+          </div>
+        </div>
+      </div>
+    `,
+  };
+
+  try {
+    await transporter.sendMail(mailOptions);
+    console.log(`📧 Email notification sent for lead: ${lead.name}`);
+  } catch (error) {
+    console.error("❌ Failed to send email notification:", error);
+  }
+}
 
 async function startServer() {
   const app = express();
-  const PORT = 3000;
+  const PORT = parseInt(process.env.PORT || "3000", 10);
 
   app.use(express.json());
 
-  // API Routes
-  app.post("/api/leads", (req, res) => {
+  // POST /api/leads — receive form submission and send email
+  app.post("/api/leads", async (req, res) => {
     const { name, email, service, message } = req.body;
-    
+
     if (!name || !email) {
       return res.status(400).json({ error: "Name and email are required" });
     }
 
-    try {
-      const stmt = db.prepare(`
-        INSERT INTO leads (name, email, service, message)
-        VALUES (?, ?, ?, ?)
-      `);
-      stmt.run(name, email, service, message);
-      
-      console.log(`New lead generated: ${name} (${email})`);
-      res.status(201).json({ success: true, message: "Lead captured successfully" });
-    } catch (error) {
-      console.error("Database error:", error);
-      res.status(500).json({ error: "Failed to save lead" });
-    }
-  });
+    console.log(`New lead received: ${name} (${email})`);
 
-  // Admin route to view leads (for demonstration)
-  app.get("/api/leads", (req, res) => {
-    const leads = db.prepare("SELECT * FROM leads ORDER BY created_at DESC").all();
-    res.json(leads);
+    // Fire-and-forget email
+    sendLeadNotification({ name, email, service, message }).catch((err) => {
+      console.error("Background email task failed:", err);
+    });
+
+    res.status(201).json({ success: true, message: "Lead captured successfully" });
   });
 
   // Vite middleware for development
   if (process.env.NODE_ENV !== "production") {
-    const vite = await createViteServer({
-      server: { middlewareMode: true },
-      appType: "spa",
-      configFile: path.resolve(__dirname, "vite.config.ts"),
-    });
-    app.use(vite.middlewares);
+    try {
+      const vite = await createViteServer({
+        server: { middlewareMode: true },
+        appType: "spa",
+        configFile: path.resolve(__dirname, "vite.config.ts"),
+      });
+      app.use(vite.middlewares);
+    } catch (e) {
+      console.error("Failed to start Vite dev server:", e);
+    }
   } else {
     app.use(express.static(path.join(__dirname, "dist")));
     app.get("*", (req, res) => {
@@ -72,7 +133,7 @@ async function startServer() {
   }
 
   app.listen(PORT, "0.0.0.0", () => {
-    console.log(`Server running on http://localhost:${PORT}`);
+    console.log(`✅ Server running on http://localhost:${PORT}`);
   });
 }
 
