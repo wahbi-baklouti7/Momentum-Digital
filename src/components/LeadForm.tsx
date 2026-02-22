@@ -1,41 +1,15 @@
 import { motion } from "motion/react";
 import { Send, CheckCircle2, ChevronDown } from "lucide-react";
-import React, { useState } from "react";
+import React from "react";
+import { useLeadForm } from "../hooks/useLeadForm";
 
 export const LeadForm = () => {
-  const [status, setStatus] = useState<"idle" | "submitting" | "success" | "error">("idle");
-  const [formData, setFormData] = useState({
+  const { formData, status, handleSubmit, handleChange, resetStatus } = useLeadForm({
     name: "",
     email: "",
     service: "Web Design & Development",
     message: ""
   });
-
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    setStatus("submitting");
-    
-    try {
-      const response = await fetch("/api/leads", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(formData)
-      });
-
-      if (response.ok) {
-        setStatus("success");
-      } else {
-        setStatus("error");
-      }
-    } catch (error) {
-      console.error("Submission error:", error);
-      setStatus("error");
-    }
-  };
-
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
-    setFormData(prev => ({ ...prev, [e.target.id.replace("lead-", "")]: e.target.value }));
-  };
 
   if (status === "success") {
     return (
@@ -53,7 +27,7 @@ export const LeadForm = () => {
             Our strategy team is reviewing your profile.
           </p>
           <button 
-            onClick={() => setStatus("idle")}
+            onClick={resetStatus}
             className="mt-8 text-momentum-purple font-mono text-sm uppercase tracking-widest hover:underline"
           >
             Send another message

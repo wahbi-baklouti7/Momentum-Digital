@@ -5,7 +5,7 @@ import path from "path";
 import { fileURLToPath } from "url";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
-const db = new Database("leads.db");
+const db = new Database(path.join(__dirname, "leads.db"));
 
 // Initialize database
 db.exec(`
@@ -61,6 +61,7 @@ async function startServer() {
     const vite = await createViteServer({
       server: { middlewareMode: true },
       appType: "spa",
+      configFile: path.resolve(__dirname, "vite.config.ts"),
     });
     app.use(vite.middlewares);
   } else {

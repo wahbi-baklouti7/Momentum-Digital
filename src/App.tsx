@@ -6,6 +6,7 @@ import { Process } from "./components/Process";
 import { LeadForm } from "./components/LeadForm";
 import { Footer } from "./components/Footer";
 import { ScrollToTop } from "./components/ScrollToTop";
+import { Marquee } from "./components/Marquee";
 import { motion, useScroll, useSpring } from "motion/react";
 
 export default function App() {
@@ -29,16 +30,7 @@ export default function App() {
       <main>
         <Hero />
         
-        {/* Marquee Section */}
-        <div className="bg-momentum-navy py-10 overflow-hidden border-y border-white/10">
-          <div className="flex whitespace-nowrap animate-marquee">
-            {[...Array(10)].map((_, i) => (
-              <span key={i} className="text-white/20 text-4xl md:text-6xl font-display font-bold uppercase tracking-tighter mx-10">
-                Accelerate Your Growth • Build Momentum • Scale Faster • 
-              </span>
-            ))}
-          </div>
-        </div>
+        <Marquee />
 
         <Services />
         
@@ -51,16 +43,6 @@ export default function App() {
 
       <Footer />
       <ScrollToTop />
-
-      <style>{`
-        @keyframes marquee {
-          0% { transform: translateX(0); }
-          100% { transform: translateX(-50%); }
-        }
-        .animate-marquee {
-          animation: marquee 40s linear infinite;
-        }
-      `}</style>
     </div>
   );
 }

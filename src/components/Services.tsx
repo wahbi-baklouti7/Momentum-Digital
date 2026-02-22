@@ -1,32 +1,5 @@
 import { motion } from "motion/react";
-import { Users, Code2, Search, Zap } from "lucide-react";
-
-const services = [
-  {
-    icon: Users,
-    title: "Social Media Marketing",
-    description: "Transforming your social presence into a high-velocity engine for brand awareness and engagement.",
-    color: "bg-momentum-cyan"
-  },
-  {
-    icon: Code2,
-    title: "Web Design & Development",
-    description: "Cinematic, high-performance websites engineered for conversion and digital prestige.",
-    color: "bg-momentum-purple"
-  },
-  {
-    icon: Search,
-    title: "SEO Optimization",
-    description: "Technical precision and content strategy to dominate search rankings and drive organic momentum.",
-    color: "bg-momentum-navy"
-  },
-  {
-    icon: Zap,
-    title: "Ads Management",
-    description: "High-intent paid campaigns across all major platforms designed for maximum ROI and rapid scaling.",
-    color: "bg-momentum-cyan"
-  }
-];
+import { SERVICES } from "../constants";
 
 export const Services = () => {
   return (
@@ -48,7 +21,7 @@ export const Services = () => {
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-px bg-momentum-navy/5 border border-momentum-navy/5 rounded-3xl overflow-hidden">
-          {services.map((service, index) => (
+          {SERVICES.map((service, index) => (
             <motion.div
               key={service.title}
               initial={{ opacity: 0, y: 20 }}

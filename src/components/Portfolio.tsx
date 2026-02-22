@@ -1,26 +1,6 @@
 import { motion } from "motion/react";
 import { ExternalLink } from "lucide-react";
-
-const projects = [
-  {
-    title: "Hasna Rachmalia Portfolio",
-    laptop: `https://s.wordpress.com/mshots/v1/${encodeURIComponent("https://hasnarachmalia.netlify.app/")}?w=1280&h=800`,
-    phone: `https://s.wordpress.com/mshots/v1/${encodeURIComponent("https://hasnarachmalia.netlify.app/")}?w=360&h=740`,
-    url: "https://hasnarachmalia.netlify.app/",
-  },
-  {
-    title: "Chnouwa Bhar",
-    laptop: `https://s.wordpress.com/mshots/v1/${encodeURIComponent("https://chnouwabhar.com/en")}?w=1280&h=800`,
-    phone: `https://s.wordpress.com/mshots/v1/${encodeURIComponent("https://chnouwabhar.com/en")}?w=360&h=740`,
-    url: "https://chnouwabhar.com/en",
-  },
-  {
-    title: "Italcleaning",
-    laptop: `https://s.wordpress.com/mshots/v1/${encodeURIComponent("https://italcleaning.it/")}?w=1280&h=800`,
-    phone: `https://s.wordpress.com/mshots/v1/${encodeURIComponent("https://italcleaning.it/")}?w=360&h=740`,
-    url: "https://italcleaning.it/",
-  },
-];
+import { PROJECTS } from "../constants";
 
 export const Portfolio = () => {
   return (
@@ -47,7 +27,7 @@ export const Portfolio = () => {
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-16 lg:gap-8">
-          {projects.map((project, index) => (
+          {PROJECTS.map((project, index) => (
             <motion.div
               key={project.title}
               initial={{ opacity: 0, scale: 0.9 }}

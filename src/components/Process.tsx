@@ -1,32 +1,5 @@
 import { motion } from "motion/react";
-import { Search, Lightbulb, Code2, Rocket } from "lucide-react";
-
-const steps = [
-  {
-    icon: Search,
-    title: "Discovery",
-    description: "We deep-dive into your brand, competitors, and target audience to find the untapped growth levers.",
-    color: "bg-momentum-navy"
-  },
-  {
-    icon: Lightbulb,
-    title: "Strategy",
-    description: "Engineering a bespoke roadmap focused on high-velocity scaling and maximum ROI.",
-    color: "bg-momentum-purple"
-  },
-  {
-    icon: Code2,
-    title: "Execution",
-    description: "Deploying high-performance digital assets and campaigns with technical precision.",
-    color: "bg-momentum-cyan"
-  },
-  {
-    icon: Rocket,
-    title: "Optimization",
-    description: "Continuous tracking and rapid iteration to maintain momentum and dominate your market.",
-    color: "bg-momentum-navy"
-  }
-];
+import { PROCESS_STEPS } from "../constants";
 
 export const Process = () => {
   return (
@@ -45,7 +18,7 @@ export const Process = () => {
           {/* Connecting Line (Desktop) */}
           <div className="hidden lg:block absolute top-1/2 left-0 w-full h-px bg-momentum-navy/10 -z-10" />
           
-          {steps.map((step, index) => (
+          {PROCESS_STEPS.map((step, index) => (
             <motion.div
               key={step.title}
               initial={{ opacity: 0, y: 20 }}

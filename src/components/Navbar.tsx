@@ -1,6 +1,7 @@
 import { motion } from "motion/react";
 import { ArrowRight, Menu, X } from "lucide-react";
 import { useState } from "react";
+import { NAV_ITEMS } from "../constants";
 
 export const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -20,7 +21,7 @@ export const Navbar = () => {
         </div>
 
         <div className="hidden md:flex items-center gap-8">
-          {["Services", "Portfolio", "Process", "Contact"].map((item) => (
+          {NAV_ITEMS.map((item) => (
             <a
               key={item}
               href={`#${item.toLowerCase().replace(" ", "-")}`}
@@ -49,7 +50,7 @@ export const Navbar = () => {
           animate={{ opacity: 1, y: 0 }}
           className="md:hidden absolute top-20 left-0 w-full bg-white border-b border-momentum-navy/5 p-6 flex flex-col gap-4 shadow-xl"
         >
-          {["Services", "Portfolio", "Process", "Contact"].map((item) => (
+          {NAV_ITEMS.map((item) => (
             <a
               key={item}
               href={`#${item.toLowerCase().replace(" ", "-")}`}

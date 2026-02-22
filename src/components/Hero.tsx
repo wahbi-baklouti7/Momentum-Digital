@@ -1,6 +1,7 @@
 import { motion, useScroll, useTransform, useSpring, useMotionValue } from "motion/react";
 import { ArrowRight, Zap, TrendingUp, Rocket, Target, Clock, Cpu } from "lucide-react";
 import { useEffect } from "react";
+import { HERO } from "../constants";
 
 export const Hero = () => {
   const mouseX = useMotionValue(0);
@@ -122,12 +123,12 @@ export const Hero = () => {
             initial={{ opacity: 0, scale: 0.95 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 1.2, ease: [0.23, 1, 0.32, 1] }}
-            className="absolute inset-0 rounded-tl-[100px] rounded-br-[40px] rounded-tr-[40px] rounded-bl-[40px] overflow-hidden border border-momentum-navy/10 shadow-[0_40px_80px_-15px_rgba(15,23,42,0.2)] z-10"
+            className="absolute inset-0 rounded-tl-[100px] rounded-br-[40px] rounded-tr-[40px] rounded-bl-[40px] overflow-hidden border border-momentum-navy/10 z-10"
           >
             <img 
-              src={`https://s.wordpress.com/mshots/v1/${encodeURIComponent("https://chnouwabhar.com/en")}?w=1280&h=800`} 
+              src={HERO.image} 
               alt="Momentum Digital Growth" 
-              className="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-1000"
+              className="w-full h-full object-cover "
               referrerPolicy="no-referrer"
             />
             <div className="absolute inset-0 bg-gradient-to-tr from-momentum-navy/20 via-transparent to-momentum-purple/10" />
