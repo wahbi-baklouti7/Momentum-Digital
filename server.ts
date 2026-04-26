@@ -4,6 +4,8 @@ import path from "path";
 import { fileURLToPath } from "url";
 import nodemailer from "nodemailer";
 import dotenv from "dotenv";
+import helmet from "helmet";
+import rateLimit from "express-rate-limit";
 
 dotenv.config();
 
@@ -83,7 +85,6 @@ async function sendLeadNotification(lead: {
 
   try {
     await transporter.sendMail(mailOptions);
-    console.log(`📧 Email notification sent for lead: ${lead.name}`);
   } catch (error) {
     console.error("❌ Failed to send email notification:", error);
   }
@@ -93,24 +94,48 @@ async function startServer() {
   const app = express();
   const PORT = parseInt(process.env.PORT || "3000", 10);
 
+  // Security Headers
+  app.use(helmet({
+    contentSecurityPolicy: {
+      directives: {
+        ...helmet.contentSecurityPolicy.getDefaultDirectives(),
+        "img-src": ["'self'", "https:", "data:"],
+        "script-src": ["'self'", "'unsafe-inline'", "'unsafe-eval'"], // Needed for Vite in dev
+      },
+    },
+  }));
+
+  // Rate Limiting
+  const limiter = rateLimit({
+    windowMs: 15 * 60 * 1000, // 15 minutes
+    max: 100, // Limit each IP to 100 requests per windowMs
+    standardHeaders: true,
+    legacyHeaders: false,
+    message: { error: "Too many requests from this IP, please try again after 15 minutes" }
+  });
+
   app.use(express.json());
 
   // POST /api/leads — receive form submission and send email
-  app.post("/api/leads", async (req, res) => {
+  app.post("/api/leads", limiter, async (req, res) => {
     const { name, email, service, message } = req.body;
 
     if (!name || !email) {
       return res.status(400).json({ error: "Name and email are required" });
     }
 
-    console.log(`New lead received: ${name} (${email})`);
+    try {
 
-    // Fire-and-forget email
-    sendLeadNotification({ name, email, service, message }).catch((err) => {
-      console.error("Background email task failed:", err);
-    });
+      // Fire-and-forget email with error handling
+      sendLeadNotification({ name, email, service, message }).catch((err) => {
+        console.error("Background email task failed:", err);
+      });
 
-    res.status(201).json({ success: true, message: "Lead captured successfully" });
+      res.status(201).json({ success: true, message: "Lead captured successfully" });
+    } catch (error) {
+      console.error("❌ API Error:", error);
+      res.status(500).json({ error: "Failed to process lead. Please try again later." });
+    }
   });
 
   // Vite middleware for development
@@ -133,7 +158,6 @@ async function startServer() {
   }
 
   app.listen(PORT, "0.0.0.0", () => {
-    console.log(`✅ Server running on http://localhost:${PORT}`);
   });
 }
 

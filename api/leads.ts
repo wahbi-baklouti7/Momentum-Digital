@@ -73,9 +73,11 @@ async function sendLeadNotification(lead: {
 
 export default async function handler(req: any, res: any) {
   // Add CORS headers for Vercel
-  res.setHeader('Access-Control-Allow-Credentials', true);
-  res.setHeader('Access-Control-Allow-Origin', '*');
-  res.setHeader('Access-Control-Allow-Methods', 'GET,OPTIONS,PATCH,DELETE,POST,PUT');
+  res.setHeader('Access-Control-Allow-Credentials', 'true');
+  // In production, this should be restricted to your specific domain
+  const origin = req.headers.origin || '*';
+  res.setHeader('Access-Control-Allow-Origin', origin);
+  res.setHeader('Access-Control-Allow-Methods', 'POST,OPTIONS');
   res.setHeader(
     'Access-Control-Allow-Headers',
     'X-CSRF-Token, X-Requested-With, Accept, Accept-Version, Content-Length, Content-MD5, Content-Type, Date, X-Api-Version'
@@ -115,6 +117,7 @@ export default async function handler(req: any, res: any) {
     return res.status(201).json({ success: true, message: "Lead captured successfully" });
   } catch (error: any) {
     console.error("❌ API Error:", error.message);
-    return res.status(500).json({ error: error.message || "Failed to send email" });
+    // Do not leak internal error details to the client
+    return res.status(500).json({ error: "Failed to process request. Please try again later." });
   }
 }

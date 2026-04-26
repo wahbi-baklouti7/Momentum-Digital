@@ -18,12 +18,12 @@ export const Process = () => {
     <section id="process" className="py-32 bg-momentum-bg relative overflow-hidden">
       <div className="max-w-7xl mx-auto px-6">
         <div className="text-center mb-20">
-          <h2 className="text-sm font-mono uppercase tracking-[0.3em] text-momentum-purple font-bold mb-4">
+          <span className="inline-block text-sm font-mono uppercase tracking-[0.3em] text-momentum-purple font-bold mb-4">
             {t("process.title")}
-          </h2>
-          <h3 className="text-5xl md:text-7xl font-display font-bold tracking-tighter">
+          </span>
+          <h2 className="text-5xl md:text-7xl font-display font-bold tracking-tighter">
             The Momentum <span className="text-momentum-cyan">Engine</span>
-          </h3>
+          </h2>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 relative">

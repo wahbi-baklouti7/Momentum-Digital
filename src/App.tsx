@@ -9,8 +9,34 @@ import { ScrollToTop } from "./components/ScrollToTop";
 import { Marquee } from "./components/Marquee";
 import { motion, useScroll, useSpring } from "motion/react";
 
+import { useTranslation } from "react-i18next";
+import { useEffect } from "react";
+
 export default function App() {
+  const { i18n, t } = useTranslation();
   const { scrollYProgress } = useScroll();
+  
+  useEffect(() => {
+    // Update document language
+    document.documentElement.lang = i18n.language;
+    
+    // Update title
+    document.title = t("metadata.title");
+    
+    // Update meta description
+    const metaDescription = document.querySelector('meta[name="description"]');
+    if (metaDescription) {
+      metaDescription.setAttribute("content", t("metadata.description"));
+    }
+    
+    // Update OG tags
+    const ogTitle = document.querySelector('meta[property="og:title"]');
+    if (ogTitle) ogTitle.setAttribute("content", t("metadata.title"));
+    
+    const ogDescription = document.querySelector('meta[property="og:description"]');
+    if (ogDescription) ogDescription.setAttribute("content", t("metadata.description"));
+  }, [i18n.language, t]);
+
   const scaleX = useSpring(scrollYProgress, {
     stiffness: 100,
     damping: 30,

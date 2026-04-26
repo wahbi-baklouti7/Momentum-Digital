@@ -49,13 +49,13 @@ export const LeadForm = () => {
       <div className="max-w-6xl mx-auto">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 items-start">
           <div className="lg:sticky lg:top-32">
-            <h2 className="text-sm font-mono uppercase tracking-[0.3em] text-momentum-purple font-bold mb-4">
+            <span className="inline-block text-sm font-mono uppercase tracking-[0.3em] text-momentum-purple font-bold mb-4">
               {t("nav.contact")}
-            </h2>
-            <h3 className="text-5xl md:text-7xl font-display font-bold tracking-tighter mb-8 leading-[0.9]">
+            </span>
+            <h2 className="text-5xl md:text-7xl font-display font-bold tracking-tighter mb-8 leading-[0.9]">
               {t("lead_form.heading_line1")} <br />
               <span className="text-momentum-cyan">{t("lead_form.heading_line2")}</span>
-            </h3>
+            </h2>
             <p className="text-momentum-navy/60 text-xl leading-relaxed mb-12">
               {t("lead_form.description")}
             </p>

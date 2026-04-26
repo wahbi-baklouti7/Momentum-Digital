@@ -19,13 +19,13 @@ export const Services = () => {
       <div className="max-w-7xl mx-auto px-6">
         <div className="flex flex-col md:flex-row justify-between items-end mb-20 gap-8">
           <div className="max-w-2xl">
-            <h2 className="text-sm font-mono uppercase tracking-[0.3em] text-momentum-purple font-bold mb-4">
+            <span className="inline-block text-sm font-mono uppercase tracking-[0.3em] text-momentum-purple font-bold mb-4">
               {t("services.title")}
-            </h2>
-            <h3 className="text-4xl md:text-6xl font-display font-bold tracking-tight">
+            </span>
+            <h2 className="text-4xl md:text-6xl font-display font-bold tracking-tight">
               {t("services.heading_line1")} <br />
               {t("services.heading_line2")}
-            </h3>
+            </h2>
           </div>
           <p className="max-w-md text-momentum-navy/50 text-lg leading-relaxed">
             {t("services.description")}

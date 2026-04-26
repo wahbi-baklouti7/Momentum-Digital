@@ -47,7 +47,12 @@ export const Navbar = () => {
   return (
     <nav className="fixed top-0 left-0 w-full z-50 border-b border-momentum-navy/5 bg-momentum-bg/80 backdrop-blur-md">
       <div className="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
-        <div className="flex items-center gap-2 group cursor-pointer">
+        <div 
+          className="flex items-center gap-2 group cursor-pointer"
+          role="link"
+          aria-label="Momentum Digital Home"
+          onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+        >
           <div className="relative w-8 h-8 flex items-center">
              <div className="absolute inset-0 bg-momentum-navy clip-path-chevron scale-75 -translate-x-2" />
              <div className="absolute inset-0 bg-momentum-purple clip-path-chevron scale-75" />
@@ -73,6 +78,8 @@ export const Navbar = () => {
           <div className="relative" ref={langRef}>
             <button
               onClick={() => setIsLangOpen(!isLangOpen)}
+              aria-label={`Select language (Current: ${currentLang.label})`}
+              aria-expanded={isLangOpen}
               className="flex items-center gap-2.5 px-3.5 py-2 rounded-full bg-momentum-navy/5 border border-momentum-navy/10 hover:border-momentum-purple/30 transition-all group"
             >
               <div className="w-5 h-3.5 rounded-sm overflow-hidden border border-momentum-navy/10">
@@ -99,6 +106,7 @@ export const Navbar = () => {
                     <button
                       key={lang.code}
                       onClick={() => changeLanguage(lang.code)}
+                      aria-label={`Change language to ${lang.label}`}
                       className={`w-full flex items-center gap-3 px-4 py-2.5 rounded-xl text-sm font-medium transition-all ${
                         isSelected(lang.code)
                           ? "bg-momentum-navy text-white shadow-lg shadow-momentum-navy/20"
@@ -124,7 +132,12 @@ export const Navbar = () => {
           </a>
         </div>
 
-        <button className="md:hidden" onClick={() => setIsOpen(!isOpen)}>
+        <button 
+          className="md:hidden" 
+          onClick={() => setIsOpen(!isOpen)}
+          aria-label={isOpen ? "Close menu" : "Open menu"}
+          aria-expanded={isOpen}
+        >
           {isOpen ? <X /> : <Menu />}
         </button>
       </div>

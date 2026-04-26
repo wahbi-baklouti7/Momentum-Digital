@@ -29,7 +29,6 @@ const detectLanguageByCountry = async () => {
     const data = await response.json();
     const country = data.country_code;
 
-    console.log('Detected country:', country);
 
     if (country === 'IT') return 'it';
     if (['DE', 'NL', 'AT', 'CH'].includes(country)) return 'de';
@@ -63,7 +62,6 @@ detectLanguageByCountry().then((detectedLang) => {
   const hasManualPref = localStorage.getItem(USER_PREF_KEY);
   
   if (!hasManualPref && detectedLang) {
-    console.log('Applying auto-detected language:', detectedLang);
     i18n.changeLanguage(detectedLang);
   }
 });
