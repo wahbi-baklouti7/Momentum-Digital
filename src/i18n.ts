@@ -12,25 +12,32 @@ const resources = {
   de: { translation: deTranslation },
 };
 
+const USER_PREF_KEY = 'momentum_user_pref';
+
 const detectLanguageByCountry = async () => {
   try {
-    // Check if we already have a saved language preference
-    const savedLang = localStorage.getItem('i18nextLng');
-    if (savedLang && ['en', 'it', 'de'].includes(savedLang)) {
-      return savedLang;
+    // 1. Priority: User explicitly selected a language
+    const manualPref = localStorage.getItem(USER_PREF_KEY);
+    if (manualPref && ['en', 'it', 'de'].includes(manualPref)) {
+      return manualPref;
     }
 
+    // 2. Secondary: Detect by IP (Geo-location)
     const response = await fetch('https://ipapi.co/json/');
+    if (!response.ok) throw new Error('IP detection failed');
+    
     const data = await response.json();
     const country = data.country_code;
 
+    console.log('Detected country:', country);
+
     if (country === 'IT') return 'it';
-    if (['DE', 'NL', 'AT'].includes(country)) return 'de';
+    if (['DE', 'NL', 'AT', 'CH'].includes(country)) return 'de';
     
     return 'en';
   } catch (error) {
     console.error('Error detecting country:', error);
-    return 'en';
+    return null; // Return null to allow fallback to browser language
   }
 };
 
@@ -44,15 +51,20 @@ i18n
       escapeValue: false,
     },
     detection: {
+      // We still use the standard detector for initial render
       order: ['localStorage', 'navigator'],
       caches: ['localStorage'],
+      lookupLocalStorage: 'i18nextLng',
     },
   });
 
-// Apply automatic detection if no preference is set
-detectLanguageByCountry().then((lang) => {
-  if (!localStorage.getItem('i18nextLng')) {
-    i18n.changeLanguage(lang);
+// Apply IP-based detection only if the user hasn't made a manual choice yet
+detectLanguageByCountry().then((detectedLang) => {
+  const hasManualPref = localStorage.getItem(USER_PREF_KEY);
+  
+  if (!hasManualPref && detectedLang) {
+    console.log('Applying auto-detected language:', detectedLang);
+    i18n.changeLanguage(detectedLang);
   }
 });
 

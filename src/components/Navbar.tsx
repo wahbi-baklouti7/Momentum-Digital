@@ -25,6 +25,7 @@ export const Navbar = () => {
   const currentLang = languages.find(l => l.code === (i18n.language.split('-')[0])) || languages[0];
 
   const changeLanguage = (lng: string) => {
+    localStorage.setItem('momentum_user_pref', lng);
     i18n.changeLanguage(lng);
     setIsLangOpen(false);
     setIsOpen(false);

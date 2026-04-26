@@ -1,17 +1,17 @@
 import { Users, Code2, Search, Zap, Lightbulb, Rocket } from "lucide-react";
 import { Service, Project, ProcessStep } from "../types";
 import pm2 from "../assets/images/pm2.png";
-import modernemetalint from "../assets/images/modernemetalint.png";
-import modernemetalint_mobile from "../assets/images/modernemetalint_mobile.png";
-import peapiscine from "../assets/images/peapiscine.png";
-import peapiscine_mobile from "../assets/images/peapiscine_mobile.png";
-import gpmtetti from "../assets/images/gpmtetti.png";
-import gpmtetti_mobile from "../assets/images/gpmtetti_mobile.png";
-import hasnarachmalia from "../assets/images/hasnarachmalia.png";
-import hasnarachmalia_mobile from "../assets/images/hasnarachmalia_mobile.png";
-import italcleaning from "../assets/images/italcleaning.png";
-import italcleaning_mobile from "../assets/images/italcleaning_mobile.png";
-import hero from "../assets/images/hero.jpg";
+import modernemetalint from "../assets/images/modernemetalint.webp";
+import modernemetalint_mobile from "../assets/images/modernemetalint_mobile.webp";
+import peapiscine from "../assets/images/peapiscine.webp";
+import peapiscine_mobile from "../assets/images/peapiscine_mobile.webp";
+import gpmtetti from "../assets/images/gpmtetti.webp";
+import gpmtetti_mobile from "../assets/images/gpmtetti_mobile.webp";
+import hasnarachmalia from "../assets/images/hasnarachmalia.webp";
+import hasnarachmalia_mobile from "../assets/images/hasnarachmalia_mobile.webp";
+import italcleaning from "../assets/images/italcleaning.webp";
+import italcleaning_mobile from "../assets/images/italcleaning_mobile.webp";
+import hero from "../assets/images/hero.webp";
 
 export const SERVICES: Service[] = [
   {
