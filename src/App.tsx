@@ -45,6 +45,13 @@ export default function App() {
 
   return (
     <div className="relative min-h-screen selection:bg-momentum-cyan selection:text-white">
+      {/* Skip to Main Content Link */}
+      <a 
+        href="#main-content" 
+        className="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-[100] focus:px-4 focus:py-2 focus:bg-momentum-purple focus:text-white focus:rounded-lg focus:shadow-xl focus:outline-none focus:ring-2 focus:ring-momentum-cyan"
+      >
+        Skip to main content
+      </a>
       {/* Progress Bar */}
       <motion.div
         className="fixed top-0 left-0 right-0 h-1 bg-momentum-cyan z-[60] origin-left"
@@ -53,7 +60,7 @@ export default function App() {
 
       <Navbar />
       
-      <main>
+      <main id="main-content">
         <Hero />
         
         <Marquee />

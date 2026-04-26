@@ -48,10 +48,17 @@ export const Navbar = () => {
     <nav className="fixed top-0 left-0 w-full z-50 border-b border-momentum-navy/5 bg-momentum-bg/80 backdrop-blur-md">
       <div className="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
         <div 
-          className="flex items-center gap-2 group cursor-pointer"
+          className="flex items-center gap-2 group cursor-pointer outline-none focus-visible:ring-2 focus-visible:ring-momentum-purple rounded-md p-1"
           role="link"
+          tabIndex={0}
           aria-label="Momentum Digital Home"
           onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+          onKeyDown={(e) => {
+            if (e.key === 'Enter' || e.key === ' ') {
+              e.preventDefault();
+              window.scrollTo({ top: 0, behavior: 'smooth' });
+            }
+          }}
         >
           <div className="relative w-8 h-8 flex items-center">
              <div className="absolute inset-0 bg-momentum-navy clip-path-chevron scale-75 -translate-x-2" />
