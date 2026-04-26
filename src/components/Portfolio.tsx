@@ -64,6 +64,7 @@ export const Portfolio = () => {
                    <div className="absolute inset-x-6 top-6 bg-momentum-navy rounded-t-lg p-1.5 shadow-2xl group-hover:-translate-y-2 transition-transform duration-500">
                       <div className="bg-white rounded-sm overflow-hidden aspect-[16/10]">
                         <img 
+                          loading="lazy"
                           src={project.laptop} 
                           alt={`${project.title} Desktop`}
                           className="w-full h-full object-cover group-hover:scale-105 transition-all duration-700"
