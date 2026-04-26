@@ -1,27 +1,39 @@
 import { motion } from "motion/react";
 import { SERVICES } from "../constants";
+import { useTranslation } from "react-i18next";
 
 export const Services = () => {
+  const { t } = useTranslation();
+
+  const servicesData = SERVICES.map((service, index) => {
+    const keys = ["smm", "web", "seo", "ads"];
+    return {
+      ...service,
+      title: t(`services.${keys[index]}`),
+      description: t(`services.${keys[index]}_desc`),
+    };
+  });
+
   return (
     <section id="services" className="py-32 bg-white">
       <div className="max-w-7xl mx-auto px-6">
         <div className="flex flex-col md:flex-row justify-between items-end mb-20 gap-8">
           <div className="max-w-2xl">
             <h2 className="text-sm font-mono uppercase tracking-[0.3em] text-momentum-purple font-bold mb-4">
-              Our Capabilities
+              {t("services.title")}
             </h2>
             <h3 className="text-4xl md:text-6xl font-display font-bold tracking-tight">
-              Precision-Engineered <br />
-              Digital Solutions
+              {t("services.heading_line1")} <br />
+              {t("services.heading_line2")}
             </h3>
           </div>
           <p className="max-w-md text-momentum-navy/50 text-lg leading-relaxed">
-            We've stripped away the fluff to focus on the four pillars of digital momentum. No vanity metrics, just pure performance.
+            {t("services.description")}
           </p>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-px bg-momentum-navy/5 border border-momentum-navy/5 rounded-3xl overflow-hidden">
-          {SERVICES.map((service, index) => (
+          {servicesData.map((service, index) => (
             <motion.div
               key={service.title}
               initial={{ opacity: 0, y: 20 }}

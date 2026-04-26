@@ -1,0 +1,87 @@
+{
+  "nav": {
+    "services": "Services",
+    "portfolio": "Portfolio",
+    "process": "Process",
+    "contact": "Contact"
+  },
+  "hero": {
+    "badge": "Performance-First Growth Agency",
+    "title_line1": "READY TO SCALE?",
+    "title_line2": "LET'S GO.",
+    "description": "We're not just another agency. We're your partners in growth, building the systems that actually get you results without the headache.",
+    "vps1": "Guaranteed ROI Focus",
+    "vps2": "24/7 Performance Tracking",
+    "vps3": "Bespoke Growth Strategy",
+    "cta": "Start Acceleration",
+    "floating1": "High Velocity Engaged",
+    "floating2": "Start Your Growth Today",
+    "floating3": "Scale Your Brand"
+  },
+  "marquee": {
+    "text": "Accelerate Your Growth • Build Momentum • Scale Faster • "
+  },
+  "services": {
+    "subtitle": "PRECISION-ENGINEERED",
+    "title": "Our Services",
+    "heading_line1": "Precision-Engineered",
+    "heading_line2": "Digital Solutions",
+    "description": "We've stripped away the fluff to focus on the four pillars of digital momentum. No vanity metrics, just pure performance.",
+    "smm": "Social Media Marketing",
+    "smm_desc": "Transforming your social presence into a high-velocity engine for brand awareness and engagement.",
+    "web": "Web Design & Development",
+    "web_desc": "Cinematic, high-performance websites engineered for conversion and digital prestige.",
+    "seo": "SEO Optimization",
+    "seo_desc": "Technical precision and content strategy to dominate search rankings and drive organic momentum.",
+    "ads": "Ads Management",
+    "ads_desc": "High-intent paid campaigns across all major platforms designed for maximum ROI and rapid scaling."
+  },
+  "portfolio": {
+    "title": "Recent Work",
+    "heading_line1": "Crafting",
+    "heading_line2": "Digital",
+    "heading_line3": "Momentum.",
+    "description": "A high-velocity showcase of websites built for conversion and scale.",
+    "launch_site": "Launch Live Site"
+  },
+  "process": {
+    "title": "How We Work",
+    "discovery": "Discovery",
+    "discovery_desc": "We deep-dive into your brand, competitors, and target audience to find the untapped growth levers.",
+    "strategy": "Strategy",
+    "strategy_desc": "Engineering a bespoke roadmap focused on high-velocity scaling and maximum ROI.",
+    "execution": "Execution",
+    "execution_desc": "Deploying high-performance digital assets and campaigns with technical precision.",
+    "optimization": "Optimization",
+    "optimization_desc": "Continuous tracking and rapid iteration to maintain momentum and dominate your market."
+  },
+  "lead_form": {
+    "title": "Ready to start?",
+    "subtitle": "Fill out the form and we'll get back to you within 24 hours.",
+    "heading_line1": "Start Your",
+    "heading_line2": "Acceleration",
+    "description": "Growth isn't accidental—it's engineered. Share your vision below, and let's build the high-velocity digital presence your brand deserves. Expect a strategy-first response within 4 hours.",
+    "benefit1": "Free Audit Included",
+    "benefit1_desc": "We'll analyze your current presence before our call.",
+    "benefit2": "No Retainer Required",
+    "benefit2_desc": "Performance-based models available for qualified brands.",
+    "name": "Name",
+    "email": "Email",
+    "service": "Service",
+    "message": "Message",
+    "message_placeholder": "Tell us about your goals...",
+    "submit": "Send Message",
+    "success": "Message sent successfully!",
+    "error": "Something went wrong. Please try again."
+  },
+  "footer": {
+    "cta_line1": "READY TO",
+    "cta_line2": "ACCELERATE?",
+    "nav_title": "Navigation",
+    "connect_title": "Connect",
+    "description": "Transforming digital potential into market momentum through engineering and creativity.",
+    "rights": "All rights reserved.",
+    "privacy": "Privacy Policy",
+    "terms": "Terms of Service"
+  }
+}

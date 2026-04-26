@@ -1,106 +1,96 @@
 import { motion } from "motion/react";
-import { ExternalLink } from "lucide-react";
+import { ExternalLink, ArrowRight } from "lucide-react";
 import { PROJECTS } from "../constants";
+import { useTranslation } from "react-i18next";
 
 export const Portfolio = () => {
+  const { t } = useTranslation();
+
   return (
-    <section id="portfolio" className="py-32 bg-white overflow-hidden">
+    <section id="portfolio" className="py-32 bg-white">
       <div className="max-w-7xl mx-auto px-6">
-        <div className="text-center mb-24">
-          <motion.h2 
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="text-5xl md:text-7xl font-display font-bold tracking-tighter mb-6"
-          >
-            Successful <span className="text-momentum-purple">Websites!</span>
-          </motion.h2>
+        {/* Simplified, Direct Header Following Branding */}
+        <div className="flex flex-col md:flex-row items-end justify-between mb-24 gap-8">
+          <div className="max-w-2xl">
+            <motion.div
+              initial={{ opacity: 0, x: -10 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              className="text-xs font-mono font-bold uppercase tracking-[0.2em] text-momentum-purple mb-4"
+            >
+              {t("portfolio.title")}
+            </motion.div>
+            <motion.h2 
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              className="text-5xl md:text-7xl font-display font-bold tracking-tighter leading-tight"
+            >
+              {t("portfolio.heading_line1")}{" "}
+              <span className="text-momentum-purple">{t("portfolio.heading_line2")}</span>{" "}
+              {t("portfolio.heading_line3")}
+            </motion.h2>
+          </div>
           <motion.p 
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: 10 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.2 }}
-            className="text-momentum-navy/50 text-xl max-w-2xl mx-auto"
+            className="text-momentum-navy/50 text-lg md:text-xl max-w-sm mb-2"
           >
-            Crafting high-performance digital experiences that convert visitors into loyal customers.
+            {t("portfolio.description")}
           </motion.p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-16 lg:gap-8">
+        {/* Direct, Clean Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12 lg:gap-16">
           {PROJECTS.map((project, index) => (
             <motion.div
               key={project.title}
-              initial={{ opacity: 0, scale: 0.9 }}
-              whileInView={{ opacity: 1, scale: 1 }}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ delay: index * 0.2, duration: 0.8 }}
-              className="relative group"
+              transition={{ delay: index * 0.1, duration: 0.5 }}
+              className="group"
             >
               <a 
                 href={project.url} 
                 target="_blank" 
                 rel="noopener noreferrer"
-                className="block relative"
+                className="block relative mb-8"
               >
-                {/* Laptop Mockup */}
-                <div className="relative z-10">
-                  <div className="relative bg-momentum-navy rounded-t-xl p-1.5 shadow-2xl">
-                    <div className="bg-white rounded-sm overflow-hidden aspect-[16/10]">
-                      <img 
-                        src={project.laptop} 
-                        alt={`${project.title} Desktop`}
-                        className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
-                        referrerPolicy="no-referrer"
-                      />
-                    </div>
-                  </div>
-                  <div className="h-3 bg-momentum-navy/90 rounded-b-xl w-[105%] -ml-[2.5%] shadow-lg" />
-                  <div className="h-1 bg-momentum-navy/80 w-1/4 mx-auto rounded-b-full" />
+                {/* Refined Mockup: Desktop with better contrast/shadows */}
+                <div className="relative aspect-[16/10] bg-momentum-navy/5 rounded-2xl overflow-hidden group-hover:shadow-2xl group-hover:shadow-momentum-navy/10 transition-all duration-500 border border-momentum-navy/5">
+                   <div className="absolute inset-x-6 top-6 bg-momentum-navy rounded-t-lg p-1.5 shadow-2xl group-hover:-translate-y-2 transition-transform duration-500">
+                      <div className="bg-white rounded-sm overflow-hidden aspect-[16/10]">
+                        <img 
+                          src={project.laptop} 
+                          alt={`${project.title} Desktop`}
+                          className="w-full h-full object-cover group-hover:scale-105 transition-all duration-700"
+                          referrerPolicy="no-referrer"
+                        />
+                      </div>
+                   </div>
                 </div>
 
-                {/* Phone Mockup */}
-                <motion.div 
-                  initial={{ x: 20, opacity: 0 }}
-                  whileInView={{ x: 0, opacity: 1 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: (index * 0.2) + 0.4, duration: 0.8 }}
-                  className="absolute -right-2 md:-right-4 -bottom-6 md:-bottom-8 z-20 w-[30%] max-w-[100px] md:max-w-[120px]"
-                >
-                  <div className="relative bg-momentum-navy rounded-[2rem] p-1.5 shadow-2xl border-[3px] border-momentum-navy">
-                    <div className="absolute top-0 left-1/2 -translate-x-1/2 w-1/3 h-4 bg-momentum-navy rounded-b-xl z-30" />
-                    <div className="bg-white rounded-[1.5rem] overflow-hidden aspect-[9/19]">
-                      <img 
-                        src={project.phone} 
-                        alt={`${project.title} Mobile`}
-                        className="w-full h-full object-cover object-top"
-                        referrerPolicy="no-referrer"
-                      />
-                    </div>
-                  </div>
-                </motion.div>
-              </a>
-
-              <div className="mt-12 text-center flex flex-col items-center gap-4">
-                <a 
-                  href={project.url} 
-                  target="_blank" 
-                  rel="noopener noreferrer"
-                  className="group/title"
-                >
-                  <h4 className="text-2xl font-display font-bold group-hover/title:text-momentum-purple transition-colors flex items-center gap-2">
+                <div className="flex items-center justify-between group-hover:text-momentum-purple transition-colors">
+                  <h4 className="text-2xl font-display font-bold tracking-tight">
                     {project.title}
                   </h4>
-                </a>
-                
-                <a 
-                  href={project.url} 
-                  target="_blank" 
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 px-6 py-2 rounded-full bg-momentum-navy/5 border border-momentum-navy/10 text-xs font-mono font-bold uppercase tracking-wider hover:bg-momentum-navy hover:text-white transition-all duration-300"
-                >
-                  Visit Website <ExternalLink size={14} />
-                </a>
-              </div>
+                  <div className="w-8 h-8 rounded-full bg-momentum-navy/5 flex items-center justify-center -rotate-45 group-hover:rotate-0 group-hover:bg-momentum-purple group-hover:text-white transition-all">
+                    <ArrowRight size={18} />
+                  </div>
+                </div>
+              </a>
+              
+              <a 
+                href={project.url} 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 text-xs font-mono font-bold uppercase tracking-widest text-momentum-navy/40 hover:text-momentum-purple transition-colors"
+              >
+                {t("portfolio.launch_site")} <ExternalLink size={14} />
+              </a>
             </motion.div>
           ))}
         </div>

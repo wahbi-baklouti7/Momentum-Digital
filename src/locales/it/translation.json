@@ -1,0 +1,87 @@
+{
+  "nav": {
+    "services": "Servizi",
+    "portfolio": "Portfolio",
+    "process": "Processo",
+    "contact": "Contatti"
+  },
+  "hero": {
+    "badge": "Agenzia di Crescita Performance-First",
+    "title_line1": "PRONTO A CRESCERE?",
+    "title_line2": "ANDIAMO.",
+    "description": "Non siamo solo un'altra agenzia. Siamo i tuoi partner nella crescita, costruendo i sistemi che ti portano risultati reali senza grattacapi.",
+    "vps1": "Focus ROI Garantito",
+    "vps2": "Tracking Performance 24/7",
+    "vps3": "Strategia di Crescita Su Misura",
+    "cta": "Inizia l'Accelerazione",
+    "floating1": "Alta Velocità Attivata",
+    "floating2": "Inizia la tua Crescita Oggi",
+    "floating3": "Scala il tuo Brand"
+  },
+  "marquee": {
+    "text": "Accelera la Tua Crescita • Crea Momentum • Scala più Velocemente • "
+  },
+  "services": {
+    "subtitle": "INGEGNERIA DI PRECISIONE",
+    "title": "I Nostri Servizi",
+    "heading_line1": "Soluzioni Digitali",
+    "heading_line2": "Progettate con Precisione",
+    "description": "Abbiamo rimosso il superfluo per concentrarci sui quattro pilastri del momentum digitale. Niente metriche di vanità, solo pura performance.",
+    "smm": "Social Media Marketing",
+    "smm_desc": "Trasformiamo la tua presenza social in un motore ad alta velocità per la brand awareness e l'engagement.",
+    "web": "Web Design & Sviluppo",
+    "web_desc": "Siti web cinematici ad alte prestazioni progettati per la conversione e il prestigio digitale.",
+    "seo": "Ottimizzazione SEO",
+    "seo_desc": "Precisione tecnica e strategia di contenuti per dominare le classifiche di ricerca e generare slancio organico.",
+    "ads": "Gestione Ads",
+    "ads_desc": "Campagne a pagamento ad alto intento su tutte le principali piattaforme, progettate per il massimo ROI e una scalabilità rapida."
+  },
+  "portfolio": {
+    "title": "Lavori Recenti",
+    "heading_line1": "Creiamo",
+    "heading_line2": "Momentum",
+    "heading_line3": "Digitale.",
+    "description": "Una vetrina ad alta velocità di siti web costruiti per la conversione e la scalabilità.",
+    "launch_site": "Visita il sito live"
+  },
+  "process": {
+    "title": "Come Lavoriamo",
+    "discovery": "Scoperta",
+    "discovery_desc": "Ci immergiamo nel tuo brand, nei competitor e nel pubblico target per trovare le leve di crescita non sfruttate.",
+    "strategy": "Strategia",
+    "strategy_desc": "Progettiamo una roadmap personalizzata focalizzata sulla scalabilità ad alta velocità e sul massimo ROI.",
+    "execution": "Esecuzione",
+    "execution_desc": "Distribuiamo asset digitali e campagne ad alte prestazioni con precisione tecnica.",
+    "optimization": "Ottimizzazione",
+    "optimization_desc": "Monitoraggio continuo e iterazione rapida per mantenere lo slancio e dominare il tuo mercato."
+  },
+  "lead_form": {
+    "title": "Pronto a iniziare?",
+    "subtitle": "Compila il modulo e ti risponderemo entro 24 ore.",
+    "heading_line1": "Inizia la Tua",
+    "heading_line2": "Accelerazione",
+    "description": "La crescita non è casuale: è progettata. Condividi la tua visione qui sotto e costruiamo la presenza digitale ad alta velocità che il tuo brand merita. Aspettati una risposta focalizzata sulla strategia entro 4 ore.",
+    "benefit1": "Audit Gratuito Incluso",
+    "benefit1_desc": "Analizzeremo la tua presenza attuale prima della nostra chiamata.",
+    "benefit2": "Nessun Contratto Vincolante",
+    "benefit2_desc": "Modelli basati sulle performance disponibili per brand qualificati.",
+    "name": "Nome",
+    "email": "Email",
+    "service": "Servizio",
+    "message": "Messaggio",
+    "message_placeholder": "Raccontaci i tuoi obiettivi...",
+    "submit": "Invia Messaggio",
+    "success": "Messaggio inviato con successo!",
+    "error": "Qualcosa è andato storto. Per favore riprova."
+  },
+  "footer": {
+    "cta_line1": "PRONTO PER",
+    "cta_line2": "ACCELERARE?",
+    "nav_title": "Navigazione",
+    "connect_title": "Contatti",
+    "description": "Trasformiamo il potenziale digitale in slancio di mercato attraverso l'ingegneria e la creatività.",
+    "rights": "Tutti i diritti riservati.",
+    "privacy": "Privacy Policy",
+    "terms": "Termini di Servizio"
+  }
+}

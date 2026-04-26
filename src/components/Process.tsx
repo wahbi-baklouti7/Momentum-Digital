@@ -1,13 +1,25 @@
 import { motion } from "motion/react";
 import { PROCESS_STEPS } from "../constants";
+import { useTranslation } from "react-i18next";
 
 export const Process = () => {
+  const { t } = useTranslation();
+
+  const processData = PROCESS_STEPS.map((step, index) => {
+    const keys = ["discovery", "strategy", "execution", "optimization"];
+    return {
+      ...step,
+      title: t(`process.${keys[index]}`),
+      description: t(`process.${keys[index]}_desc`),
+    };
+  });
+
   return (
     <section id="process" className="py-32 bg-momentum-bg relative overflow-hidden">
       <div className="max-w-7xl mx-auto px-6">
         <div className="text-center mb-20">
           <h2 className="text-sm font-mono uppercase tracking-[0.3em] text-momentum-purple font-bold mb-4">
-            Our Methodology
+            {t("process.title")}
           </h2>
           <h3 className="text-5xl md:text-7xl font-display font-bold tracking-tighter">
             The Momentum <span className="text-momentum-cyan">Engine</span>
@@ -18,7 +30,7 @@ export const Process = () => {
           {/* Connecting Line (Desktop) */}
           <div className="hidden lg:block absolute top-1/2 left-0 w-full h-px bg-momentum-navy/10 -z-10" />
           
-          {PROCESS_STEPS.map((step, index) => (
+          {processData.map((step, index) => (
             <motion.div
               key={step.title}
               initial={{ opacity: 0, y: 20 }}

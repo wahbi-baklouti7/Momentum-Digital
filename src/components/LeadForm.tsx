@@ -2,12 +2,14 @@ import { motion } from "motion/react";
 import { Send, CheckCircle2, ChevronDown } from "lucide-react";
 import React from "react";
 import { useLeadForm } from "../hooks/useLeadForm";
+import { useTranslation } from "react-i18next";
 
 export const LeadForm = () => {
+  const { t } = useTranslation();
   const { formData, status, handleSubmit, handleChange, resetStatus } = useLeadForm({
     name: "",
     email: "",
-    service: "Web Design & Development",
+    service: t("services.web"),
     message: ""
   });
 
@@ -22,7 +24,7 @@ export const LeadForm = () => {
           >
             <CheckCircle2 size={40} />
           </motion.div>
-          <h2 className="text-4xl font-display font-bold mb-4">Momentum Secured!</h2>
+          <h2 className="text-4xl font-display font-bold mb-4">{t("lead_form.success")}</h2>
           <p className="text-momentum-navy/60 text-lg">
             Our strategy team is reviewing your profile.
           </p>
@@ -48,14 +50,14 @@ export const LeadForm = () => {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 items-start">
           <div className="lg:sticky lg:top-32">
             <h2 className="text-sm font-mono uppercase tracking-[0.3em] text-momentum-purple font-bold mb-4">
-              Get in Touch
+              {t("nav.contact")}
             </h2>
             <h3 className="text-5xl md:text-7xl font-display font-bold tracking-tighter mb-8 leading-[0.9]">
-              Start Your <br />
-              <span className="text-momentum-cyan">Acceleration</span>
+              {t("lead_form.heading_line1")} <br />
+              <span className="text-momentum-cyan">{t("lead_form.heading_line2")}</span>
             </h3>
             <p className="text-momentum-navy/60 text-xl leading-relaxed mb-12">
-              Growth isn't accidental—it's engineered. Share your vision below, and let's build the high-velocity digital presence your brand deserves. Expect a strategy-first response within 4 hours.
+              {t("lead_form.description")}
             </p>
 
             <div className="space-y-8">
@@ -64,8 +66,8 @@ export const LeadForm = () => {
                   <CheckCircle2 size={24} />
                 </div>
                 <div>
-                  <h4 className="font-bold">Free Audit Included</h4>
-                  <p className="text-sm text-momentum-navy/50">We'll analyze your current presence before our call.</p>
+                  <h4 className="font-bold">{t("lead_form.benefit1")}</h4>
+                  <p className="text-sm text-momentum-navy/50">{t("lead_form.benefit1_desc")}</p>
                 </div>
               </div>
               <div className="flex items-center gap-4">
@@ -73,8 +75,8 @@ export const LeadForm = () => {
                   <CheckCircle2 size={24} />
                 </div>
                 <div>
-                  <h4 className="font-bold">No Retainer Required</h4>
-                  <p className="text-sm text-momentum-navy/50">Performance-based models available for qualified brands.</p>
+                  <h4 className="font-bold">{t("lead_form.benefit2")}</h4>
+                  <p className="text-sm text-momentum-navy/50">{t("lead_form.benefit2_desc")}</p>
                 </div>
               </div>
             </div>
@@ -90,12 +92,13 @@ export const LeadForm = () => {
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div className="space-y-2">
                   <label htmlFor="lead-name" className="text-[10px] font-mono uppercase tracking-widest font-bold text-momentum-navy/40 ml-1">
-                    Full Name
+                    {t("lead_form.name")}
                   </label>
                   <input
                     id="lead-name"
                     required
                     type="text"
+                    name="name"
                     value={formData.name}
                     onChange={handleChange}
                     placeholder="John Doe"
@@ -105,12 +108,13 @@ export const LeadForm = () => {
 
                 <div className="space-y-2">
                   <label htmlFor="lead-email" className="text-[10px] font-mono uppercase tracking-widest font-bold text-momentum-navy/40 ml-1">
-                    Work Email
+                    {t("lead_form.email")}
                   </label>
                   <input
                     id="lead-email"
                     required
                     type="email"
+                    name="email"
                     value={formData.email}
                     onChange={handleChange}
                     placeholder="john@company.com"
@@ -121,19 +125,20 @@ export const LeadForm = () => {
 
               <div className="space-y-2">
                 <label htmlFor="lead-service" className="text-[10px] font-mono uppercase tracking-widest font-bold text-momentum-navy/40 ml-1">
-                  Service Interest
+                  {t("lead_form.service")}
                 </label>
                 <div className="relative group/select">
                   <select
                     id="lead-service"
+                    name="service"
                     value={formData.service}
                     onChange={handleChange}
                     className="w-full px-6 py-4 bg-momentum-bg border border-transparent rounded-2xl focus:border-momentum-purple focus:bg-white transition-all outline-none appearance-none cursor-pointer font-medium text-momentum-navy"
                   >
-                    <option>Web Design & Development</option>
-                    <option>Social Media Marketing</option>
-                    <option>SEO Optimization</option>
-                    <option>Ads Management</option>
+                    <option>{t("services.web")}</option>
+                    <option>{t("services.smm")}</option>
+                    <option>{t("services.seo")}</option>
+                    <option>{t("services.ads")}</option>
                   </select>
                   <div className="absolute right-6 top-1/2 -translate-y-1/2 pointer-events-none text-momentum-navy/30 group-hover/select:text-momentum-purple transition-colors">
                     <ChevronDown size={20} />
@@ -143,20 +148,21 @@ export const LeadForm = () => {
 
               <div className="space-y-2">
                 <label htmlFor="lead-message" className="text-[10px] font-mono uppercase tracking-widest font-bold text-momentum-navy/40 ml-1">
-                  How can we help?
+                  {t("lead_form.message")}
                 </label>
                 <textarea
                   id="lead-message"
+                  name="message"
                   rows={4}
                   value={formData.message}
                   onChange={handleChange}
-                  placeholder="Tell us about your goals..."
+                  placeholder={t("lead_form.message_placeholder")}
                   className="w-full px-6 py-4 bg-momentum-bg border border-transparent rounded-2xl focus:border-momentum-purple focus:bg-white transition-all outline-none resize-none"
                 />
               </div>
 
               {status === "error" && (
-                <p className="text-red-500 text-sm font-medium">Something went wrong. Please try again.</p>
+                <p className="text-red-500 text-sm font-medium">{t("lead_form.error")}</p>
               )}
 
               <button
@@ -167,7 +173,7 @@ export const LeadForm = () => {
                   <div className="w-6 h-6 border-2 border-white/30 border-t-white rounded-full animate-spin" />
                 ) : (
                   <>
-                    <span className="text-lg">Send</span>
+                    <span className="text-lg">{t("lead_form.submit")}</span>
                     <Send size={20} className="group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
                   </>
                 )}

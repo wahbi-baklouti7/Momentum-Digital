@@ -2,8 +2,10 @@ import { motion, useScroll, useTransform, useSpring, useMotionValue } from "moti
 import { ArrowRight, Zap, TrendingUp, Rocket, Target, Clock, Cpu } from "lucide-react";
 import { useEffect } from "react";
 import { HERO } from "../constants";
+import { useTranslation } from "react-i18next";
 
 export const Hero = () => {
+  const { t } = useTranslation();
   const mouseX = useMotionValue(0);
   const mouseY = useMotionValue(0);
 
@@ -53,7 +55,7 @@ export const Hero = () => {
           >
             <span className="w-2 h-2 rounded-full bg-momentum-cyan animate-pulse" />
             <span className="text-xs font-mono uppercase tracking-widest font-semibold">
-              Performance-First Growth Agency
+              {t("hero.badge")}
             </span>
           </motion.div>
 
@@ -63,9 +65,9 @@ export const Hero = () => {
             transition={{ duration: 0.8, delay: 0.2 }}
             className="text-6xl md:text-8xl lg:text-9xl font-display font-bold tracking-tighter leading-[0.85] mb-8"
           >
-            READY TO SCALE? <br />
+            {t("hero.title_line1")} <br />
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-momentum-navy via-momentum-purple to-momentum-cyan">
-              LET'S GO.
+              {t("hero.title_line2")}
             </span>
           </motion.h1>
 
@@ -75,7 +77,7 @@ export const Hero = () => {
             transition={{ duration: 0.8, delay: 0.4 }}
             className="max-w-xl mx-auto lg:mx-0 text-lg md:text-xl text-momentum-navy/60 mb-8 leading-relaxed"
           >
-            We're not just another agency. We're your partners in growth, building the systems that actually get you results without the headache.
+            {t("hero.description")}
           </motion.p>
 
           {/* Value Proposition List */}
@@ -86,9 +88,9 @@ export const Hero = () => {
             className="flex flex-wrap justify-center lg:justify-start gap-x-8 gap-y-4 mb-12"
           >
             {[
-              { text: "Guaranteed ROI Focus", icon: Target },
-              { text: "24/7 Performance Tracking", icon: Clock },
-              { text: "Bespoke Growth Strategy", icon: Cpu }
+              { text: t("hero.vps1"), icon: Target },
+              { text: t("hero.vps2"), icon: Clock },
+              { text: t("hero.vps3"), icon: Cpu }
             ].map((item, i) => (
               <div key={i} className="flex items-center gap-2.5">
                 <div className="w-6 h-6 rounded-full bg-momentum-cyan/10 flex items-center justify-center">
@@ -110,7 +112,7 @@ export const Hero = () => {
               className="group relative px-10 py-5 bg-momentum-navy text-white font-bold rounded-full overflow-hidden transition-all hover:scale-105 shadow-2xl shadow-momentum-navy/20"
             >
               <span className="relative z-10 flex items-center gap-2">
-                Start Acceleration <ArrowRight size={20} className="group-hover:translate-x-1 transition-transform" />
+                {t("hero.cta")} <ArrowRight size={20} className="group-hover:translate-x-1 transition-transform" />
               </span>
             </a>
           </motion.div>
@@ -140,15 +142,12 @@ export const Hero = () => {
           <motion.div
             animate={{ y: [0, -10, 0] }}
             transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
-            className="absolute -top-12 -right-16 p-6 bg-white/95 backdrop-blur-xl rounded-[2.5rem] shadow-[0_30px_60px_-12px_rgba(15,23,42,0.15)] border border-white/50 z-30 flex items-center gap-4 min-w-[280px]"
+            className="absolute -top-12 -right-16 p-4 bg-white/95 backdrop-blur-xl rounded-full shadow-[0_20px_40px_-8px_rgba(15,23,42,0.1)] border border-white/50 z-30 flex items-center gap-3 pr-10"
           >
-            <div className="w-14 h-14 rounded-2xl bg-gradient-to-br from-momentum-purple to-violet-600 text-white flex items-center justify-center shadow-lg shadow-momentum-purple/30">
-              <Zap size={28} />
+            <div className="w-10 h-10 rounded-full bg-momentum-purple/10 flex items-center justify-center text-momentum-purple shadow-inner">
+              <Zap size={18} />
             </div>
-            <div className="flex flex-col">
-              <span className="text-base font-bold text-momentum-navy tracking-tight">High Velocity</span>
-              <span className="text-xs text-momentum-navy/50 font-medium">Priority Scaling Engaged</span>
-            </div>
+            <span className="text-[12px] font-bold uppercase tracking-[0.15em] text-momentum-navy">{t("hero.floating1")}</span>
           </motion.div>
 
           {/* 2. Start Your Growth Today (Middle Left) */}
@@ -160,7 +159,7 @@ export const Hero = () => {
             <div className="w-10 h-10 rounded-full bg-momentum-purple/10 flex items-center justify-center text-momentum-purple shadow-inner">
               <Rocket size={18} />
             </div>
-            <span className="text-[12px] font-bold uppercase tracking-[0.15em] text-momentum-navy">Start Your Growth Today</span>
+            <span className="text-[12px] font-bold uppercase tracking-[0.15em] text-momentum-navy">{t("hero.floating2")}</span>
           </motion.div>
 
           {/* 3. Scale Your Brand (Bottom Right) */}
@@ -172,7 +171,7 @@ export const Hero = () => {
             <div className="w-10 h-10 rounded-full bg-momentum-cyan/10 flex items-center justify-center text-momentum-cyan shadow-inner">
               <TrendingUp size={18} />
             </div>
-            <span className="text-[12px] font-bold uppercase tracking-[0.15em] text-momentum-navy">Scale Your Brand</span>
+            <span className="text-[12px] font-bold uppercase tracking-[0.15em] text-momentum-navy">{t("hero.floating3")}</span>
           </motion.div>
         </div>
       </div>

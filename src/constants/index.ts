@@ -1,11 +1,16 @@
 import { Users, Code2, Search, Zap, Lightbulb, Rocket } from "lucide-react";
 import { Service, Project, ProcessStep } from "../types";
-import pc1 from "../assets/images/pc1.png";
-import pc2 from "../assets/images/pc2.png";
-import pc3 from "../assets/images/pc3.png";
-import pm1 from "../assets/images/pm1.png";
 import pm2 from "../assets/images/pm2.png";
-import pm3 from "../assets/images/pm3.png";
+import modernemetalint from "../assets/images/modernemetalint.png";
+import modernemetalint_mobile from "../assets/images/modernemetalint_mobile.png";
+import peapiscine from "../assets/images/peapiscine.png";
+import peapiscine_mobile from "../assets/images/peapiscine_mobile.png";
+import gpmtetti from "../assets/images/gpmtetti.png";
+import gpmtetti_mobile from "../assets/images/gpmtetti_mobile.png";
+import hasnarachmalia from "../assets/images/hasnarachmalia.png";
+import hasnarachmalia_mobile from "../assets/images/hasnarachmalia_mobile.png";
+import italcleaning from "../assets/images/italcleaning.png";
+import italcleaning_mobile from "../assets/images/italcleaning_mobile.png";
 import hero from "../assets/images/hero.jpg";
 
 export const SERVICES: Service[] = [
@@ -36,24 +41,43 @@ export const SERVICES: Service[] = [
 ];
 
 export const PROJECTS: Project[] = [
+  // {
+  //   title: "Hasna Rachmalia Portfolio",
+  //   laptop: hasnarachmalia,
+  //   phone: hasnarachmalia_mobile,
+  //   url: "https://hasnarachmalia.netlify.app/",
+  // },
   {
-    title: "Hasna Rachmalia Portfolio",
-    laptop: `https://s.wordpress.com/mshots/v1/${encodeURIComponent("https://hasnarachmalia.netlify.app/")}?w=1280&h=800`,
-    phone: pm1,
-    url: "https://hasnarachmalia.netlify.app/",
+    title: "GPM Tetti",
+    laptop: gpmtetti,
+    phone: gpmtetti_mobile,
+    url: "https://gpmtetti.it/",
   },
-  {
-    title: "Chnouwa Bhar",
-    laptop: `https://s.wordpress.com/mshots/v1/${encodeURIComponent("https://chnouwabhar.com/en")}?w=1280&h=800`,
-    phone: pm2,
-    url: "https://chnouwabhar.com/en",
-  },
+  // {
+  //   title: "Chnouwa Bhar",
+  //   laptop: `https://s.wordpress.com/mshots/v1/${encodeURIComponent("https://chnouwabhar.com/en")}?w=1280&h=800`,
+  //   phone: pm2,
+  //   url: "https://chnouwabhar.com/en",
+  // },
   {
     title: "Italcleaning",
-    laptop: `https://s.wordpress.com/mshots/v1/${encodeURIComponent("https://italcleaning.it/")}?w=1280&h=800`,
-    phone: pm3,
+    laptop: italcleaning,
+    phone: italcleaning_mobile,
     url: "https://italcleaning.it/",
   },
+  {
+    title: "Moderne Metal",
+    laptop: modernemetalint,
+    phone: modernemetalint_mobile,
+    url: "http://www.modernemetalint.com/",
+  },
+  {
+    title: "PEA Piscine",
+    laptop: peapiscine,
+    phone: peapiscine_mobile,
+    url: "https://www.pea-piscine.tn/",
+  },
+  
 ];
 
 export const PROCESS_STEPS: ProcessStep[] = [

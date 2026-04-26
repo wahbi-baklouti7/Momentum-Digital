@@ -1,12 +1,15 @@
 import React from "react";
+import { useTranslation } from "react-i18next";
 
 export const Marquee = () => {
+  const { t } = useTranslation();
+
   return (
     <div className="bg-momentum-navy py-10 overflow-hidden border-y border-white/10">
       <div className="flex whitespace-nowrap animate-marquee">
         {[...Array(10)].map((_, i) => (
           <span key={i} className="text-white/20 text-4xl md:text-6xl font-display font-bold tracking-tighter mx-10">
-            Accelerate Your Growth • Build Momentum • Scale Faster • 
+            {t("marquee.text")}
           </span>
         ))}
       </div>

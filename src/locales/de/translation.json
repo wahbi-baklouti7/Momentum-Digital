@@ -1,0 +1,87 @@
+{
+  "nav": {
+    "services": "Leistungen",
+    "portfolio": "Portfolio",
+    "process": "Prozess",
+    "contact": "Kontakt"
+  },
+  "hero": {
+    "badge": "Performance-First Wachstumsagentur",
+    "title_line1": "BEREIT FÜR WACHSTUM?",
+    "title_line2": "LOS GEHT'S.",
+    "description": "Wir sind nicht einfach nur eine weitere Agentur. Wir sind Ihre Partner für Wachstum und bauen die Systeme, die Ihnen tatsächlich Ergebnisse ohne Kopfschmerzen liefern.",
+    "vps1": "Garantierter ROI-Fokus",
+    "vps2": "24/7 Performance-Tracking",
+    "vps3": "Maßgeschneiderte Wachstumsstrategie",
+    "cta": "Beschleunigung starten",
+    "floating1": "Hohe Geschwindigkeit aktiviert",
+    "floating2": "Starten Sie Ihr Wachstum heute",
+    "floating3": "Skalieren Sie Ihre Marke"
+  },
+  "marquee": {
+    "text": "Beschleunigen Sie Ihr Wachstum • Momentum aufbauen • Schneller skalieren • "
+  },
+  "services": {
+    "subtitle": "PRÄZISIONSENGINEERING",
+    "title": "Unsere Leistungen",
+    "heading_line1": "Präzisionsgefertigte",
+    "heading_line2": "Digitale Lösungen",
+    "description": "Wir haben das Unnötige weggelassen, um uns auf die vier Säulen des digitalen Momentums zu konzentrieren. Keine Vanity-Metriken, nur reine Performance.",
+    "smm": "Social Media Marketing",
+    "smm_desc": "Wir verwandeln Ihre soziale Präsenz in einen Hochgeschwindigkeitsmotor für Markenbekanntheit und Engagement.",
+    "web": "Webdesign & Entwicklung",
+    "web_desc": "Cinematische, leistungsstarke Websites, die auf Konversion und digitales Ansehen ausgelegt sind.",
+    "seo": "SEO-Optimierung",
+    "seo_desc": "Technische Präzision und Content-Strategie, um Suchmaschinen-Rankings zu dominieren und organisches Momentum zu erzeugen.",
+    "ads": "Ads-Management",
+    "ads_desc": "High-Intent-Bezahlkampagnen auf allen wichtigen Plattformen, entwickelt für maximalen ROI und schnelle Skalierung."
+  },
+  "portfolio": {
+    "title": "Aktuelle Projekte",
+    "heading_line1": "Wir schaffen",
+    "heading_line2": "digitales",
+    "heading_line3": "Momentum.",
+    "description": "Ein Hochgeschwindigkeits-Schaufenster von Websites, die auf Konversion und Skalierung ausgelegt sind.",
+    "launch_site": "Live-Website ansehen"
+  },
+  "process": {
+    "title": "Wie wir arbeiten",
+    "discovery": "Analyse",
+    "discovery_desc": "Wir tauchen tief in Ihre Marke, Ihre Wettbewerber und Ihre Zielgruppe ein, um ungenutzte Wachstumshebel zu finden.",
+    "strategy": "Strategie",
+    "strategy_desc": "Entwicklung einer maßgeschneiderten Roadmap, die auf schnelle Skalierung und maximalen ROI ausgerichtet ist.",
+    "execution": "Umsetzung",
+    "execution_desc": "Bereitstellung von leistungsstarken digitalen Assets und Kampagnen mit technischer Präzision.",
+    "optimization": "Optimierung",
+    "optimization_desc": "Kontinuierliches Tracking und schnelle Iteration, um das Momentum aufrechtzuerhalten und Ihren Markt zu dominieren."
+  },
+  "lead_form": {
+    "title": "Bereit loszulegen?",
+    "subtitle": "Füllen Sie das Formular aus und wir melden uns innerhalb von 24 Stunden bei Ihnen.",
+    "heading_line1": "Starten Sie Ihre",
+    "heading_line2": "Beschleunigung",
+    "description": "Wachstum ist kein Zufall – es ist geplant. Teilen Sie uns unten Ihre Vision mit, und lassen Sie uns die digitale Hochgeschwindigkeitspräsenz aufbauen, die Ihre Marke verdient. Erwarten Sie innerhalb von 4 Stunden eine strategieorientierte Antwort.",
+    "benefit1": "Kostenloses Audit inklusive",
+    "benefit1_desc": "Wir analysieren Ihre aktuelle Präsenz vor unserem Gespräch.",
+    "benefit2": "Keine monatliche Bindung",
+    "benefit2_desc": "Performance-basierte Modelle für qualifizierte Marken verfügbar.",
+    "name": "Name",
+    "email": "E-Mail",
+    "service": "Leistung",
+    "message": "Nachricht",
+    "message_placeholder": "Erzählen Sie uns von Ihren Zielen...",
+    "submit": "Nachricht senden",
+    "success": "Nachricht erfolgreich gesendet!",
+    "error": "Etwas ist schief gelaufen. Bitte versuchen Sie es erneut."
+  },
+  "footer": {
+    "cta_line1": "BEREIT ZUR",
+    "cta_line2": "BESCHLEUNIGUNG?",
+    "nav_title": "Navigation",
+    "connect_title": "Kontakt",
+    "description": "Wir verwandeln digitales Potenzial durch Engineering und Kreativität in Marktdynamik.",
+    "rights": "Alle Rechte vorbehalten.",
+    "privacy": "Datenschutz",
+    "terms": "Nutzungsbedingungen"
+  }
+}
