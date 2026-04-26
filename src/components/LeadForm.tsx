@@ -89,6 +89,17 @@ export const LeadForm = () => {
             className="bg-white p-8 md:p-12 rounded-[3rem] shadow-2xl border border-momentum-navy/5"
           >
             <form onSubmit={handleSubmit} className="space-y-8">
+              {/* Honeypot field - Hidden from users */}
+              <div className="hidden" aria-hidden="true">
+                <input
+                  type="text"
+                  name="_honeypot"
+                  value={(formData as any)._honeypot}
+                  onChange={handleChange}
+                  tabIndex={-1}
+                  autoComplete="off"
+                />
+              </div>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div className="space-y-2">
                   <label htmlFor="lead-name" className="text-[10px] font-mono uppercase tracking-widest font-bold text-momentum-navy/40 ml-1">

@@ -90,7 +90,21 @@ export default async function handler(req: any, res: any) {
     return res.status(405).json({ error: "Method not allowed" });
   }
 
-  const { name, email, service, message } = req.body;
+  const { name, email, service, message, _honeypot, _t } = req.body;
+
+  // 1. Honeypot check (Bots fill all fields)
+  if (_honeypot) {
+    console.warn("🛡️ Bot detected via honeypot.");
+    return res.status(200).json({ success: true, message: "Lead captured successfully" }); // Return success to fool the bot
+  }
+
+  // 2. Simple rate limit/speed check (Bots submit instantly)
+  const submissionTime = parseInt(_t || "0", 10);
+  const now = Date.now();
+  if (!submissionTime || now - submissionTime < 2000) {
+    console.warn("🛡️ Bot detected via speed check.");
+    return res.status(400).json({ error: "Suspicious activity detected. Please try again." });
+  }
 
   if (!name || !email) {
     return res.status(400).json({ error: "Name and email are required" });

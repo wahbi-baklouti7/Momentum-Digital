@@ -3,7 +3,11 @@ import { LeadFormData, SubmissionStatus } from "../types";
 
 export const useLeadForm = (initialData: LeadFormData) => {
   const [status, setStatus] = useState<SubmissionStatus>("idle");
-  const [formData, setFormData] = useState<LeadFormData>(initialData);
+  const [formData, setFormData] = useState<LeadFormData & { _startTime: number; _honeypot: string }>({
+    ...initialData,
+    _startTime: Date.now(),
+    _honeypot: ""
+  });
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -13,7 +17,10 @@ export const useLeadForm = (initialData: LeadFormData) => {
       const response = await fetch("/api/leads", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(formData)
+        body: JSON.stringify({
+          ...formData,
+          _t: (formData as any)._startTime.toString()
+        })
       });
 
       if (response.ok) {
